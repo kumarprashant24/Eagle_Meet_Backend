@@ -7,24 +7,19 @@ const io = require('socket.io')(server, {
     }
   });
 
-
   io.on('connection', (socket) =>{
-   
-    socket.on("join_room", (data) => {
   
+    socket.on("join_room", (data) => {
+
         socket.join(data.room);
        
         socket.to(data.room).emit("user-connected",data);
 
         socket.on('disconnect',()=>{
-        socket.to(data.room).emit("user-disconnected",data.id);
+        socket.to(data.room).emit("user-disconnected",data);
         })
-
-      
       })
-    // socket.on("send_message", async (data) => {
-    //     socket.to(data.room).emit("recieve_message", data);
-    // });
+   
   });
 
   server.listen(5000, () => console.log('Server running at port', 5000));
