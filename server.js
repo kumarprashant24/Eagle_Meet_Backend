@@ -16,11 +16,9 @@ const io = require('socket.io')(server, {
   io.on('connection', (socket) =>{
   
     socket.on("join_room", (data) => {
-
+      
         socket.join(data.room);
-       
         socket.to(data.room).emit("user-connected",data);
-
         socket.on('disconnect',()=>{
         io.to(data.room).emit("user-disconnected",data);
         })
@@ -30,6 +28,7 @@ const io = require('socket.io')(server, {
       
        io.to(data.room).emit("user-leave",data)
       })
+      
    
   });
 
@@ -40,17 +39,6 @@ const io = require('socket.io')(server, {
       credentials: true,
     })
   );
-
-
-  
-  // app.set('trust proxy', 1);
-  // app.use(cookieSession(cookie));
-  // app.use(express.json());
-  // app.use(express.urlencoded({ extended: true }));
-  // app.use(expressSession({secret:"secret",resave:true,saveUninitialized:true}));
-
-  // app.use(passport.initialize());
-  // app.use(passport.session());
 
   app.set('trust proxy', 1);
   app.use(expressSession({secret:"secret",resave:true,saveUninitialized:true}));
