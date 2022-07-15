@@ -28,6 +28,15 @@ io.on('connection', (socket) => {
 
     io.to(data.room).emit("user-leave", data)
   })
+
+  socket.on('join_chat_room', (data) => {
+    socket.join(data.room);
+  })
+  socket.on('send-chat', (data) => {
+
+    io.to(data.room).emit("receive-chat", data)
+  })
+
 });
 
 app.use(
