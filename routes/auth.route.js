@@ -1,3 +1,4 @@
+require('dotenv').config();
 const router = require('express').Router();
 const passport = require('passport');
 const user = require('../models/user.model');
@@ -8,8 +9,8 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(
     new GoogleStrategy(
         {
-            clientID: '911683311399-7ndq0oc584d5v1jjgj7gac0p89bts06s.apps.googleusercontent.com',
-            clientSecret: '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',
+            clientID: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
             callbackURL: `http://localhost:5000/api/auth/google/callback`,
         },
         (accessToken, refreshToken, profile, done) => {

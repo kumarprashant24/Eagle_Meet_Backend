@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors')
@@ -58,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', require('./routes/index'));
 
-mongoose.connect('mongodb+srv://prashant24:Prince24@cluster0.2pd6v.mongodb.net/eagle_meet?retryWrites=true&w=majority', (err) => {
+mongoose.connect(process.env.MONGO_URI, (err) => {
   !err && console.log('connected to database');
   err && console.log(err.message);
 });
