@@ -41,6 +41,9 @@ io.on('connection', (socket) => {
   socket.on('off-video',data=>{
     io.to(data.room).emit("set-default-video", data)
   })
+  socket.on('off-mic',data=>{
+    io.to(data.room).emit("set-default-mic", data)
+  })
 
 });
 
