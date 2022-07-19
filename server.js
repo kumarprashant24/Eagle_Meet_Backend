@@ -38,6 +38,10 @@ io.on('connection', (socket) => {
     io.to(data.room).emit("receive-chat", data)
   })
 
+  socket.on('off-video',data=>{
+    io.to(data.room).emit("set-default-video", data)
+  })
+
 });
 
 app.use(
