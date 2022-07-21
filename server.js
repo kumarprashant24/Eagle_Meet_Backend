@@ -22,12 +22,12 @@ io.on('connection', (socket) => {
 
     socket.to(data.room).emit("user-connected", data);
     socket.on('disconnect', () => {
-      io.to(data.room).emit("user-disconnected", data);
+      socket.to(data.room).emit("user-disconnected", data);
     })
   })
   socket.on("call-ended", (data) => {
 
-    io.to(data.room).emit("user-leave", data)
+    socket.to(data.room).emit("user-leave", data)
   })
 
   socket.on('join_chat_room', (data) => {
