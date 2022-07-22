@@ -44,6 +44,12 @@ io.on('connection', (socket) => {
   socket.on('off-mic',data=>{
     io.to(data.room).emit("set-default-mic", data)
   })
+  socket.on('share-screen',data=>{
+    socket.to(data.room).emit("big-screen", data)
+  })
+  socket.on('stop-share-screen',data=>{
+    socket.to(data.room).emit("close-big-screen", data)
+  })
 
 });
 
