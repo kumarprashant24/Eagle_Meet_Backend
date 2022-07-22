@@ -12,8 +12,11 @@ const io = require('socket.io')(server, {
     origin: "*"
   }
 });
+const {PORT} = require('./config')
 const cookie = { secret: "secret", resave: true, saveUninitialized: true };
+  
 
+console.log(process.env.NODE_ENV );
 io.on('connection', (socket) => {
 
   socket.on("join_room", (data) => {
@@ -55,7 +58,7 @@ io.on('connection', (socket) => {
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
@@ -78,4 +81,4 @@ mongoose.connect(process.env.MONGO_URI, (err) => {
 });
 
 
-server.listen(5000, () => console.log('Server running at port', 5000));
+server.listen(PORT, () => console.log('Server is running' + PORT));

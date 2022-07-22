@@ -11,7 +11,7 @@ passport.use(
         {
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: `http://localhost:5000/api/auth/google/callback`,
+            callbackURL: `${process.env.SERVER_URL}/api/auth/google/callback`,
         },
         (accessToken, refreshToken, profile, done) => {
             // find if a user exist with this email or not
@@ -66,7 +66,7 @@ router.get(
     '/google/callback',
     passport.authenticate('google', {
         failureRedirect: `/login/success`,
-        successRedirect: `http://localhost:3000`,
+        successRedirect: process.env.CLIENT_URL,
     })
 );
 
@@ -77,22 +77,13 @@ router.get('/login/success', (req, res) => {
     } else res.send({ success: false });
 });
 
-// router.get('/logout', (req, res) => {
-//      req.session = null;
-//     req.user = null
-//     req.logout();
-   
-   
-//     console.log(req.session);
-//     res.redirect('http://localhost:3000');
-// });
 router.get('/logout', function(req, res, next) {
     req.logout(function(err) {
       if (err) { 
         return next(err); 
         }
         req.session=null
-        res.redirect('http://localhost:3000');
+        res.redirect(process.env.CLIENT_URL);
     });
   });
 
