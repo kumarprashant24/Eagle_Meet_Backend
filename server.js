@@ -7,6 +7,14 @@ const expressSession = require('express-session')
 const mongoose = require('mongoose')
 const server = require('http').createServer(app);
 const passport = require('passport');
+const {
+  CLIENT_ID,
+  CLIENT_SECRET,
+  CLIENT_URL,
+  MONGO_URI,
+  SERVER_URL,
+} = require('./config');
+
 const io = require('socket.io')(server, {
   cors: {
     origin: "*"
@@ -16,7 +24,7 @@ const {PORT} = require('./config')
 const cookie = { secret: "secret", resave: true, saveUninitialized: true };
   
 
-console.log(process.env.NODE_ENV );
+
 io.on('connection', (socket) => {
 
   socket.on("join_room", (data) => {
@@ -58,7 +66,7 @@ io.on('connection', (socket) => {
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: CLIENT_URL,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
@@ -75,7 +83,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', require('./routes/index'));
 
-mongoose.connect(process.env.MONGO_URI, (err) => {
+mongoose.connect(MONGO_URI, (err) => {
   !err && console.log('connected to database');
   err && console.log(err.message);
 });
