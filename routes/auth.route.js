@@ -3,15 +3,21 @@ const router = require('express').Router();
 const passport = require('passport');
 const user = require('../models/user.model');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
+const {
+    CLIENT_ID,
+    CLIENT_SECRET,
+    CLIENT_URL,
+    SERVER_URL,
+  } = require('../config');
+  
 
 
 passport.use(
     new GoogleStrategy(
         {
-            clientID: process.env.CLIENT_ID,
-            clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: `${process.env.SERVER_URL}/api/auth/google/callback`,
+            clientID: CLIENT_ID,
+            clientSecret: CLIENT_SECRET,
+            callbackURL: `${SERVER_URL}/api/auth/google/callback`,
         },
         (accessToken, refreshToken, profile, done) => {
             // find if a user exist with this email or not
@@ -66,7 +72,7 @@ router.get(
     '/google/callback',
     passport.authenticate('google', {
         failureRedirect: `/login/success`,
-        successRedirect: process.env.CLIENT_URL,
+        successRedirect: CLIENT_URL,
     })
 );
 
@@ -83,7 +89,7 @@ router.get('/logout', function(req, res, next) {
         return next(err); 
         }
         req.session=null
-        res.redirect(process.env.CLIENT_URL);
+        res.redirect(CLIENT_URL);
     });
   });
 
