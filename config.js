@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+console.log();
+
 if (process.env.NODE_ENV === 'prod') {
 
   exports.PORT = process.env.PORT || 80;

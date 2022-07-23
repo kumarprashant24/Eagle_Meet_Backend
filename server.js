@@ -22,8 +22,7 @@ const io = require('socket.io')(server, {
     origin: "*"
   }
 });
-// const {PORT} = require('./config')
-// const cookie = { secret: "secret", resave: true, saveUninitialized: true };
+
   
 io.on('connection', (socket) => {
 
