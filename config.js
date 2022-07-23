@@ -8,6 +8,15 @@ if (process.env.NODE_ENV === 'prod') {
   exports.MONGO_URI = process.env.MONGO_URI;
   exports.CLIENT_URL = process.env.CLIENT_URL;
   exports.SERVER_URL = process.env.SERVER_URL;
+  exports.cookie = {
+    secret: 'Session Secret',
+    resave: true,
+    saveUninitialized: true,
+    maxAge: 24 * 60 * 60 * 100,
+    secure: true,
+    httpOnly: true,
+    sameSite: 'none',
+  };
 }
 if (process.env.NODE_ENV === 'dev') {
 
@@ -17,6 +26,7 @@ if (process.env.NODE_ENV === 'dev') {
     exports.MONGO_URI ='mongodb+srv://prashant24:Prince24@cluster0.2pd6v.mongodb.net/eagle_meet?retryWrites=true&w=majority'
     exports.CLIENT_URL = 'http://localhost:3000'
     exports.SERVER_URL = 'http://localhost:5000'
+    exports.cookie = { secret: "secret", resave: true, saveUninitialized: true }
   
   }
   
@@ -27,4 +37,5 @@ if (process.env.NODE_ENV === 'dev') {
     exports.MONGO_URI ='mongodb+srv://prashant24:Prince24@cluster0.2pd6v.mongodb.net/eagle_meet?retryWrites=true&w=majority'
     exports.CLIENT_URL = 'http://localhost:3000'
     exports.SERVER_URL = 'http://localhost:5000'
+    exports.cookie = { secret: "secret", resave: true, saveUninitialized: true }
   }

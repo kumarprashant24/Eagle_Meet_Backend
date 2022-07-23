@@ -13,6 +13,8 @@ const {
   CLIENT_URL,
   MONGO_URI,
   SERVER_URL,
+  cookie,
+  PORT
 } = require('./config');
 
 const io = require('socket.io')(server, {
@@ -20,11 +22,9 @@ const io = require('socket.io')(server, {
     origin: "*"
   }
 });
-const {PORT} = require('./config')
-const cookie = { secret: "secret", resave: true, saveUninitialized: true };
+// const {PORT} = require('./config')
+// const cookie = { secret: "secret", resave: true, saveUninitialized: true };
   
-
-
 io.on('connection', (socket) => {
 
   socket.on("join_room", (data) => {
@@ -73,7 +73,7 @@ app.use(
 );
 
 app.set('trust proxy', 1);
-app.use(expressSession({ secret: "secret", resave: true, saveUninitialized: true }));
+app.use(expressSession(cookie));
 
 app.use(passport.initialize());
 app.use(passport.session());
