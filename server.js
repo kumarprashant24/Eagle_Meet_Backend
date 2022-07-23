@@ -55,7 +55,7 @@ io.on('connection', (socket) => {
     io.to(data.room).emit("set-default-mic", data)
   })
   socket.on('share-screen',data=>{
-    socket.to(data.room).emit("big-screen", data)
+    io.to(data.room).emit("big-screen", data)
   })
   socket.on('stop-share-screen',data=>{
     socket.to(data.room).emit("close-big-screen", data)
