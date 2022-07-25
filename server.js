@@ -60,7 +60,6 @@ io.on('connection', (socket) => {
   socket.on('stop-share-screen',data=>{
     socket.to(data.room).emit("close-big-screen", data)
   })
-
 });
 
 app.use(
