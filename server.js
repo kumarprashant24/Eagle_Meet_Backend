@@ -8,18 +8,15 @@ const mongoose = require('mongoose')
 const server = require('http').createServer(app);
 const passport = require('passport');
 const {
-  CLIENT_ID,
-  CLIENT_SECRET,
   CLIENT_URL,
   MONGO_URI,
-  SERVER_URL,
   cookie,
   PORT
 } = require('./config');
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: "*"
+    origin: CLIENT_URL
   }
 });
 
