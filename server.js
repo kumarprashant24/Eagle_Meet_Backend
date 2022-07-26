@@ -11,16 +11,15 @@ const {
   CLIENT_URL,
   MONGO_URI,
   cookie,
-  PORT,CLIENT_ID
+  PORT
 } = require('./config');
 
 const io = require('socket.io')(server, {
   cors: {
-    origin: CLIENT_URL
+    origin: '*'
   }
 });
 
-console.log(CLIENT_ID);
   
 io.on('connection', (socket) => {
 
@@ -69,7 +68,7 @@ app.use(
 );
 
 app.set('trust proxy', 1);
-app.use(expressSession(cookie));
+app.use(cookieSession(cookie));
 
 app.use(passport.initialize());
 app.use(passport.session());
