@@ -80,7 +80,7 @@ router.get('/login/success', (req, res) => {
  
     if (req.user) {
         res.send({ success: true, user: req.user });
-    } else res.send({ success: false , nothing:'nothing found'});
+    } else res.send({ success: true , nothing:'nothing found'});
 });
 
 router.get('/logout', function(req, res, next) {
