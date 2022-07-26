@@ -68,6 +68,7 @@ app.use(
 );
 
 app.set('trust proxy', 1);
+app.enable('trust proxy')
 app.use(expressSession(cookie));
 
 app.use(passport.initialize());
