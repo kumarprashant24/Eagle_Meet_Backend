@@ -11,7 +11,7 @@ const {
   CLIENT_URL,
   MONGO_URI,
   cookie,
-  PORT
+  PORT,CLIENT_ID
 } = require('./config');
 
 const io = require('socket.io')(server, {
@@ -20,6 +20,7 @@ const io = require('socket.io')(server, {
   }
 });
 
+console.log(CLIENT_ID);
   
 io.on('connection', (socket) => {
 

@@ -15,9 +15,9 @@ const {
 passport.use(
     new GoogleStrategy(
         {
-            clientID: CLIENT_ID,
-            clientSecret: CLIENT_SECRET,
-            callbackURL: `${SERVER_URL}/api/auth/google/callback`,
+            clientID: '911683311399-7ndq0oc584d5v1jjgj7gac0p89bts06s.apps.googleusercontent.com',
+            clientSecret: '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',
+            callbackURL: `https://eagle-meet-backend.herokuapp.com/api/auth/google/callback`,
         },
         (accessToken, refreshToken, profile, done) => {
             // find if a user exist with this email or not
