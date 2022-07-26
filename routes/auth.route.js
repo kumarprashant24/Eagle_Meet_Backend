@@ -72,7 +72,7 @@ router.get(
     '/google/callback',
     passport.authenticate('google', {
         failureRedirect: `/login/success`,
-        successRedirect: CLIENT_URL,
+        successRedirect: `${CLIENT_URL}`,
     })
 );
 
