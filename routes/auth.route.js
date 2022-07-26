@@ -10,8 +10,6 @@ const {
     SERVER_URL,
   } = require('../config');
   
-
-
 passport.use(
     new GoogleStrategy(
         {
@@ -48,7 +46,8 @@ passport.use(
 
 
 passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    
+    done(null, user._id);
 });
 
 passport.deserializeUser(function (id, done) {
