@@ -10,12 +10,14 @@ if (process.env.NODE_ENV === 'prod') {
   exports.CLIENT_URL = process.env.CLIENT_URL;
   exports.SERVER_URL = process.env.SERVER_URL;
   exports.cookie = {
-    secret: 'Session Secret',
-    resave: true,
+    secret: 'Session Secret Eagle Meet',
+    resave: false,
     saveUninitialized: true,
-    maxAge: 24 * 60 * 60 * 100,
+    maxAge: 1000 * 60 * 60 * 48,
+    name: 'MyEagleMeetApplication',
+    proxy: true,
     secure: true,
-    httpOnly: true,
+    httpOnly: false,
     sameSite: 'none',
   };
 }
