@@ -82,13 +82,9 @@ router.get('/login/success', (req, res) => {
 });
 
 router.get('/logout', function(req, res, next) {
-    req.logout(function(err) {
-      if (err) { 
-        return next(err); 
-        }
-        req.session=null
-        res.redirect(CLIENT_URL);
-    });
+    req.logout();
+    req.session = null;
+    res.redirect(CLIENT_URL);
   });
 
 module.exports = router;
