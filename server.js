@@ -78,9 +78,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', require('./routes/index'));
-app.get('/',(req,res)=>{
-  res.send('hello word')
-})
 mongoose.connect(MONGO_URI, (err) => {
   !err && console.log('connected to database');
   err && console.log(err.message);
