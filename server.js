@@ -20,6 +20,7 @@ const io = require('socket.io')(server, {
   }
 });
 
+console.log(CLIENT_URL);
 
 io.on('connection', (socket) => {
 
