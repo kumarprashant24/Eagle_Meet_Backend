@@ -78,7 +78,7 @@ router.get('/login/success', (req, res) => {
  
     if (req.user) {
         res.send({ success: true, user: req.user });
-    } else res.send({ success: false});
+    } else res.send({ success: true});
 });
 
 router.get('/logout', function(req, res) {
