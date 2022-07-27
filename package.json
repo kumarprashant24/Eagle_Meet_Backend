@@ -4,7 +4,7 @@
   "description": "",
   "main": "config.js",
   "scripts": {
-    "start": "npm run build && nodemon server.js"
+    "start": "nodemon server.js"
    
   },
   "author": "",
