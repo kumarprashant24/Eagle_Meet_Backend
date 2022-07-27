@@ -81,7 +81,7 @@ router.get('/login/success', (req, res) => {
     } else res.send({ success: false});
 });
 
-router.get('/logout', function(req, res, next) {
+router.get('/logout', function(req, res) {
     req.logout();
     req.session = null;
     res.redirect(CLIENT_URL);
