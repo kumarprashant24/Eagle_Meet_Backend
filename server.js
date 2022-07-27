@@ -20,7 +20,7 @@ const io = require('socket.io')(server, {
   }
 });
 
-  
+
 io.on('connection', (socket) => {
 
   socket.on("join_room", (data) => {
